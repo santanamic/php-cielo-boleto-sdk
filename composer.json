@@ -1,0 +1,24 @@
+{
+    "name": "santanamic/php-cielo-boletos-sdk",
+    "description": "Emissão de Boletos com a API Cielo pagamentos",
+    "type": "library",
+	"prefer-stable": true,
+    "keywords": [
+        "Cielo",
+        "php",
+        "sdk",
+        "api",
+        "e-commerce",
+        "payments"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.5",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": { "P3DFN49CS\\" : "lib/" }
+    }
+}
