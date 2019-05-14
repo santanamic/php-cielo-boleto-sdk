@@ -1,8 +1,7 @@
 {
-    "name": "santanamic/php-cielo-boletos-sdk",
-    "description": "Emissão de Boletos com a API Cielo pagamentos",
+    "name": "santanamic/php-cielo-boleto-sdk",
+    "description": "Emissão de Boleto com a API Cielo pagamentos",
     "type": "library",
-	"prefer-stable": true,
     "keywords": [
         "Cielo",
         "php",
