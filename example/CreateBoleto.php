@@ -2,14 +2,12 @@
 
 namespace P3DFN49CS;
 
-require_once('./vendor/autoload.php');
+require_once('../vendor/autoload.php');
 
 $config = new Configuration();
 $auth = $config->setAuthentication( new Auth\TokenAuth() )
 	->setAccessToken('MerchantId', 'd44fdb6f-fc9b-47d9-abcf-4bf61539ab91')
 	->setAccessToken('MerchantKey', 'DLIKHQSIXFATZKNAUBVHGWHYPRFMGSUWFMAMXKWK');
-	
-var_dump( $config );
 
 $client = new Client($config);
 

@@ -2,7 +2,7 @@
 
 namespace P3DFN49CS;
 
-require_once('./vendor/autoload.php');
+require_once('../vendor/autoload.php');
 
 $config = new Configuration();
 $auth = $config->setAuthentication( new Auth\TokenAuth() )
