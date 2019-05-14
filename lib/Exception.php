@@ -20,7 +20,7 @@
  * @link    https://github.com/santanamic/php-cielo-boleto-sdk.git
  */
 
-namespace P3DFN49CS;
+namespace CieloBoleto;
 
 /**
  * Exceptions class for HTTP conections

@@ -18,6 +18,6 @@
         "ext-mbstring": "*"
     },
     "autoload": {
-        "psr-4": { "P3DFN49CS\\" : "lib/" }
+        "psr-4": { "CieloBoleto\\" : "lib/" }
     }
 }

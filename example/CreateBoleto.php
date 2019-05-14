@@ -1,6 +1,6 @@
 <?php
 
-namespace P3DFN49CS;
+namespace CieloBoleto;
 
 require_once('../vendor/autoload.php');
 
