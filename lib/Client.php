@@ -1,6 +1,32 @@
 <?php
 
+/**
+ * Configuration Class
+ *
+ * This file is part of <santanamic/php-cielo-boleto-sdk>
+ * Created by WILLIAN SANTANA <https://github.com/santanamic>
+ *
+ * For the information of copyright and license you should read the file
+ * LICENSE which is distributed with this source code.
+ *
+ * Para a informaçao dos direitos autorais e de licença voce deve ler o arquivo
+ * LICENSE que é distribuído com este código-fonte.
+ *
+ * Para obtener la información de los derechos de autor y la licencia debe leer
+ * el archivo LICENSE que se distribuye con el código fuente.
+ *
+ * @package santanamic/php-cielo-boleto-sdk
+ * @author  @santanamic
+ * @link    https://github.com/santanamic/php-cielo-boleto-sdk.git
+ */
+
 namespace P3DFN49CS;
+
+/**
+ * Client for HTTP conections
+ *
+ * @category Class
+ */
 
 class Client
 {
@@ -17,14 +43,15 @@ class Client
      *
      * @var Configuration
      */
-    protected $config;
 
+    protected $config;
 
     /**
      * Constructor of the class
      *
-     * @param Configuration $config config for this ApiClient
+     * @param Configuration $config config for this Client
      */
+
     public function __construct(Configuration $config = null)
     {
         if ($config === null) {
@@ -39,11 +66,11 @@ class Client
      *
      * @return Configuration
      */
+
     public function getConfig()
     {
         return $this->config;
     }
-
 
     /**
      * Make the HTTP call (Sync)
@@ -55,10 +82,11 @@ class Client
      * @param string $responseType expected response type of the endpoint
      * @param string $endpointPath path to method endpoint before expanding parameters
      *
-     * @throws \Swagger\Client\ApiException on a non 2xx response
+     * @throws Client\Exception on a non 2xx response
      * @return mixed
      */
-    public function call($resourcePath, $method, $queryParams, $postData, $headerParams = null, $responseType = true, $endpointPath = null)
+    
+     public function call($resourcePath, $method, $queryParams, $postData, $headerParams = null, $responseType = true, $endpointPath = null)
     {	
         $headers = [];
 		$defaultHeader = $this->config->getHeaders();
@@ -217,6 +245,7 @@ class Client
     *
     * @return string[] Array of HTTP response heaers
     */
+
     protected function httpParseHeaders($raw_headers)
     {
         // ref/credit: http://php.net/manual/en/function.http-parse-headers.php#112986
