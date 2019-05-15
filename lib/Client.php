@@ -79,14 +79,14 @@ class Client
      * @param string $method       method to call
      * @param array  $queryParams  parameters to be place in query URL
      * @param array  $postData     parameters to be placed in POST body
-     * @param string $responseType expected response type of the endpoint
+     * @param string $jsonResponse expected response type of the endpoint
      * @param string $endpointPath path to method endpoint before expanding parameters
      *
      * @throws Client\Exception on a non 2xx response
      * @return mixed
      */
     
-     public function call($resourcePath, $method, $queryParams, $postData, $headerParams = null, $responseType = true, $endpointPath = null)
+     public function call($resourcePath, $method, $queryParams, $postData, $headerParams = null, $jsonResponse = true, $endpointPath = null)
     {	
         $headers = [];
 		$defaultHeader = $this->config->getHeaders();
@@ -210,20 +210,19 @@ class Client
             }
 
             $exception = new Exception($error_message, 0, null, null);
-            $exception->setResponseObject($response_info);
             throw $exception;
         } elseif ($response_info['http_code'] >= 200 && $response_info['http_code'] <= 299) {
             // return raw body if response is a file
-            if ($responseType === true) {
+            if ($jsonResponse === true) {
                 return [$http_body, $response_info['http_code'], $http_header];
             }
 
-            $data = json_decode($http_body);
+            $data = json_decode($http_body, true);
             if (json_last_error() > 0) { // if response is a string
                 $data = $http_body;
             }
         } else {
-            $data = json_decode($http_body);
+            $data = json_decode($http_body, true);
             if (json_last_error() > 0) { // if response is a string
                 $data = $http_body;
             }
