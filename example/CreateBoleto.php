@@ -44,10 +44,9 @@ $body = [
 
 $novoBoleto = new SDK\CreateBoleto($client);
 
-
 try {
-    $result = $novoBoleto->run($body);
-    var_export($result);
+    $result = $novoBoleto->run($body, false);
+    var_dump($result);
 } catch (Exception $e) {
     echo 'Exception when calling CreateBoleto->run: ', $e->getMessage(), PHP_EOL;
 }

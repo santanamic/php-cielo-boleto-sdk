@@ -18,8 +18,8 @@ $statusBoleto = new SDK\StatusBoleto($client);
 
 
 try {
-    $result = $statusBoleto->run($paymentId);
-    var_export($result);
+    $result = $statusBoleto->run($paymentId, false);
+    var_dump($result);
 } catch (Exception $e) {
     echo 'Exception when calling StatusBoleto->run: ', $e->getMessage(), PHP_EOL;
 }
