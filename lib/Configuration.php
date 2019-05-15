@@ -565,7 +565,7 @@ class Configuration
      * @return string The report for debugging
      */
 
-    public static function toDebugReport()
+    public function toDebugReport()
     {
         $report  = 'PHP SDK Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
