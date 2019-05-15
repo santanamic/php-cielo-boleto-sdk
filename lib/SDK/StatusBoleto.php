@@ -33,12 +33,13 @@ class StatusBoleto extends Base
     /**
      * Run operation 
      *
+     * @param boolean $jsonResponse default is true for success json output type
      * @param array $paymentId the payment ID
      * @throws Exception on non-2xx response
      * @return Client HTTP status code, HTTP response headers (array of strings)
      */
 
-    public function run($paymentId)
+    public function run($paymentId, $jsonResponse = true)
     {
 		$this->client->getConfig()->setHost('https://apiquerysandbox.cieloecommerce.cielo.com.br/1');
         $resourcePath = "/sales/" . $paymentId;
@@ -48,15 +49,16 @@ class StatusBoleto extends Base
         $formParams = [];
 
         try {
-            return $this->client->call(
+            list($response, $statusCode, $httpHeader) = $this->client->call(
                 $resourcePath,
                 'GET',
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                true,
+                $jsonResponse,
                 '/sales'
             );
+			return $response;
         } catch (Exception $e) {
             throw $e;
         }

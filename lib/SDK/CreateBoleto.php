@@ -35,11 +35,12 @@ class CreateBoleto extends Base
      * Run operation 
      *
      * @param array $body payment info
+     * @param boolean $jsonResponse default is true for success json output type
      * @throws Exception on non-2xx response
      * @return Client HTTP status code, HTTP response headers (array of strings)
      */
     
-    public function run($body)
+    public function run($body, $jsonResponse = true)
     {
         $resourcePath = "/sales";
         $httpBody = $body;
@@ -48,15 +49,16 @@ class CreateBoleto extends Base
         $formParams = [];
 
         try {
-            return $this->client->call(
+            list($response, $statusCode, $httpHeader) = $this->client->call(
                 $resourcePath,
                 'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                true,
+                $jsonResponse,
                 '/sales'
             );
+			return $response;
         } catch (Exception $e) {
             throw $e;
         }
