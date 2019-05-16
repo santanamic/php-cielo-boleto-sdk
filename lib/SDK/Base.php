@@ -22,6 +22,8 @@
 
 namespace CieloBoleto\SDK;
 
+use CieloBoleto\Environment;
+
 /**
  * Client for HTTP conections
  *
@@ -34,20 +36,34 @@ abstract class Base
     /**
      * Client HTTP
      *
-     * @var Client instance of the Client
+     * @var Client
      */
 
     protected $client;
+	
+    /**
+     * Host URL
+     *
+     * @var Environment
+     */
+	 
+	protected $environment;
 
     /**
      * Constructor
      *
      * @param Client $client The api client to use
+	 * @param Environment $environment The host instancie
      */
 
-    public function __construct($client)
-    {
+    public function __construct($client, $environment = null)
+    {		
+		if ($environment == null) {
+            $environment = Environment::production();
+        }
+		
         $this->client = $client;
+        $this->environment = $environment;
     }
 
     /**
