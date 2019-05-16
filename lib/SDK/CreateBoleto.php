@@ -42,10 +42,21 @@ class CreateBoleto extends Base
     
     public function run($body, $jsonResponse = true)
     {
+		/**
+		 * Define host for client API
+		 */
+		 
+		$this->client->getConfig()
+			 ->setHost( $this->environment->getApiURL() );
+
+		/**
+		 * Set default options for request
+		 */
+		 
         $resourcePath = "/sales";
         $httpBody = $body;
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = ['Content-Type'=>'application/json'];
         $formParams = [];
 
         try {

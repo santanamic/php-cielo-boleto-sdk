@@ -41,11 +41,21 @@ class StatusBoleto extends Base
 
     public function run($paymentId, $jsonResponse = true)
     {
-		$this->client->getConfig()->setHost('https://apiquerysandbox.cieloecommerce.cielo.com.br/1');
+		/**
+		 * Define host for client API
+		 */
+		 
+		$this->client->getConfig()
+			 ->setHost( $this->environment->getApiQueryURL() );
+		
+		/**
+		 * Set default options for request
+		 */
+		 
         $resourcePath = "/sales/" . $paymentId;
         $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = ['Content-Type'=>'application/json'];
         $formParams = [];
 
         try {
