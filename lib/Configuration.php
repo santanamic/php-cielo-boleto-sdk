@@ -39,12 +39,12 @@ class Configuration
     protected $authentication;
 
     /**
-     * Primary host
+     * Primary host URL
      * 
      * @var string
      */
     
-    protected $host = 'https://apisandbox.cieloecommerce.cielo.com.br/1';
+    protected $host;
 
     /**
      * Default headers
@@ -52,7 +52,7 @@ class Configuration
      * @var string
      */
 	
-    protected $headers = ['Content-Type'=>'application/json'];
+    protected $headers = [];
 
     /**
      * User agent of the HTTP request
@@ -60,7 +60,7 @@ class Configuration
      * @var string
      */
 
-    protected $userAgent = 'PHP-CIELO-BOLETO-SDK/1.0.0/php';
+    protected $userAgent = 'CLIENT/1.0.0/php';
 
     /**
      * Debug client (default set to false)
@@ -567,7 +567,7 @@ class Configuration
 
     public function toDebugReport()
     {
-        $report  = 'PHP SDK Debug Report:' . PHP_EOL;
+        $report  = 'Client Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    Temp Folder Path: ' . $this->getTempFolderPath() . PHP_EOL;
