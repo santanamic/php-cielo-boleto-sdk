@@ -4,10 +4,11 @@ namespace CieloBoleto;
 
 require_once('../vendor/autoload.php');
 
+$environment = Environment::sandbox();
 $config = new Configuration();
-$auth = $config->setAuthentication( new Auth\TokenAuth() )
-	->setAccessToken('MerchantId', 'd44fdb6f-fc9b-47d9-abcf-4bf61539ab91')
-	->setAccessToken('MerchantKey', 'DLIKHQSIXFATZKNAUBVHGWHYPRFMGSUWFMAMXKWK');
+$auth = $config->setAuthentication( Auth::TokenAuth() )
+			   ->setAccessToken('MerchantId', 'd44fdb6f-fc9b-47d9-abcf-4bf61539ab91')
+			   ->setAccessToken('MerchantKey', 'DLIKHQSIXFATZKNAUBVHGWHYPRFMGSUWFMAMXKWK');
 
 $client = new Client($config);
 
@@ -42,7 +43,7 @@ $body = [
 ];
 
 
-$novoBoleto = new SDK\CreateBoleto($client);
+$novoBoleto = new SDK\CreateBoleto($client, $environment);
 
 try {
     $result = $novoBoleto->run($body, false);
